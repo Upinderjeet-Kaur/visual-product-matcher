@@ -6,7 +6,7 @@ import numpy as np
 from PIL import Image
 import torch
 from transformers import CLIPProcessor, CLIPModel
-from .supabase_client import get_similar_products
+from supabase_client import get_similar_products
 import io
 import os
 import base64

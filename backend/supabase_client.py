@@ -1,16 +1,10 @@
 import os
 from supabase import create_client, Client
 from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
-from dotenv import load_dotenv
-import os
 from pathlib import Path
 
-# Explicitly load .env from the backend folder
+# Explicitly load .env from the backend folder (for local testing)
 load_dotenv(dotenv_path=Path(__file__).parent / ".env")
-
 
 url: str = os.environ.get("SUPABASE_URL")
 key: str = os.environ.get("SUPABASE_KEY")
@@ -19,6 +13,7 @@ if not url or not key:
     raise ValueError("Supabase URL and KEY must be set in environment variables")
 
 supabase: Client = create_client(url, key)
+
 
 def get_similar_products(embedding, limit=10, threshold=0.7):
     try:
